@@ -16,26 +16,30 @@
 	</module>
 	
 	<module name="planscalcroute">
-		<param name="networkModes" value="car,mytaxi" />
-		<!--param name="networkModes" value="car" /-->
+		<param name="networkModes" value="car" />
 	</module>
 
 	<module name="controler">
 		<param name="outputDirectory" value="data/output" />
 		<param name="firstIteration" value="0" />
-		<param name="lastIteration" value="20" />
+		<param name="lastIteration" value="30" />
 		<param name="mobsim" value="qsim" />
 		<param name="snapshotFormat" value="" />
 	</module>
 
 	<module name="qsim">
 		<!-- "start/endTime" of MobSim (00:00:00 == take earliest activity time/ run as long as active vehicles exist) -->
-		<param name="startTime" value="06:00:00" />
-		<param name="endTime" value="14:00:00" />
-	
+<!-- 		<param name="startTime" value="06:00:00" /> -->
+<!-- 		<param name="endTime" value="14:00:00" /> -->
+
+		<param name="startTime" value="00:00:00" />
+		<param name="endTime" value="00:00:00" />
+
+		<param name="flowCapacityFactor" value="1.00" />
+		<param name="storageCapacityFactor" value="1.00" />
+		
 		<param name = "snapshotperiod"	value = "00:01:00"/> <!-- 00:00:00 means NO snapshot writing -->
-		<param name="mainMode" value="car,mytaxi" />
-		<!-- <param name="mainMode" value="car" /> -->
+		<param name="mainMode" value="car" />
 	</module>
 
 	<module name="planCalcScore">
@@ -96,7 +100,7 @@
 		<param name="utilityOfLineSwitch" value="-0.095"/>
 
 		<!-- [utils/hr] additional marginal utility for waiting. normally negative. this comes on top of the opportunity cost of time.  Probably implemented correctly, but not tested. -->
-		<param name="waiting" value="-0.0" />
+		<param name="waiting" value="-0.4" />
 
 		<!-- [utils/hr] utility offset for waiting.  this comes on top of the opportunity cost of time.  Probably implemented correctly, but not tested. -->
 		<!-- param name="waitingPt" value="-1.62" / -->
@@ -117,10 +121,6 @@
 		<param name="activityClosingTime_1" value="19:00:00" />
 	</module>
 	
-	<module name="changeLegMode">
-		<param name="modes" value="car,mytaxi" />
-	</module>
-	
 	<module name="strategy">
 		<param name="maxAgentPlanMemorySize" value="5" /> <!-- 0 means unlimited -->
 
@@ -129,8 +129,6 @@
 
 		<param name="ModuleProbability_2" value="0.4" />
 		<param name="Module_2" value="ReRoute" />
-		
-		<param name="ModuleProbability_3" value="0.5" />
-		<param name="Module_3" value="ChangeLegMode" />
+		<param name="ModuleDisableAfterIteration_2" value="20" />
 	</module>
 </config>
