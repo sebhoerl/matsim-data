@@ -3,34 +3,91 @@
 <plans>
 	<person id="1">
 		<plan>
-			<act type="home" link="1" end_time="06:00" />
-			<leg mode="car">
-			</leg>
-			<act type="work" x="5000" y="5000" link="5" dur="00:10" />
-			<leg mode="car">
-			</leg>
+			<act type="home" link="1" end_time="06:00:00" />
+			<leg mode="car"></leg>
+			<act type="work" link="7" dur="02:00:00" end_time="09:00:00" />
+			<leg mode="car"></leg>
 			<act type="home" link="1" />
 		</plan>
 	</person>
 	<person id="2">
 		<plan>
-			<act type="home" link="1" end_time="06:00" />
-			<leg mode="car">
-			</leg>
-			<act type="work" x="5000" y="5000" link="5" dur="00:10" />
-			<leg mode="car">
-			</leg>
+			<act type="home" link="1" end_time="06:00:05" />
+			<leg mode="car"></leg>
+			<act type="work" link="7" dur="02:00:00" end_time="09:00:00" />
+			<leg mode="car"></leg>
 			<act type="home" link="1" />
 		</plan>
 	</person>
 	<person id="3">
 		<plan>
-			<act type="home" link="1" end_time="06:00" />
-			<leg mode="car">
-			</leg>
-			<act type="work" x="5000" y="5000" link="5" dur="00:10" />
-			<leg mode="car">
-			</leg>
+			<act type="home" link="1" end_time="06:00:10" />
+			<leg mode="car"></leg>
+			<act type="work" link="7" dur="02:00:00" end_time="09:00:00" />
+			<leg mode="car"></leg>
+			<act type="home" link="1" />
+		</plan>
+	</person>
+	<person id="4">
+		<plan>
+			<act type="home" link="1" end_time="06:00:15" />
+			<leg mode="car"></leg>
+			<act type="work" link="7" dur="02:00:00" end_time="09:00:00" />
+			<leg mode="car"></leg>
+			<act type="home" link="1" />
+		</plan>
+	</person>
+	<person id="5">
+		<plan>
+			<act type="home" link="1" end_time="06:00:20" />
+			<leg mode="car"></leg>
+			<act type="work" link="7" dur="02:00:00" end_time="09:00:00" />
+			<leg mode="car"></leg>
+			<act type="home" link="1" />
+		</plan>
+	</person>
+	<person id="6">
+		<plan>
+			<act type="home" link="1" end_time="06:00:25" />
+			<leg mode="car"></leg>
+			<act type="work" link="7" dur="02:00:00" end_time="09:00:00" />
+			<leg mode="car"></leg>
+			<act type="home" link="1" />
+		</plan>
+	</person>
+	<person id="7">
+		<plan>
+			<act type="home" link="1" end_time="06:00:30" />
+			<leg mode="car"></leg>
+			<act type="work" link="7" dur="02:00:00" end_time="09:00:00" />
+			<leg mode="car"></leg>
+			<act type="home" link="1" />
+		</plan>
+	</person>
+	<person id="8">
+		<plan>
+			<act type="home" link="1" end_time="06:00:35" />
+			<leg mode="car"></leg>
+			<act type="work" link="7" dur="02:00:00" end_time="09:00:00" />
+			<leg mode="car"></leg>
+			<act type="home" link="1" />
+		</plan>
+	</person>
+	<person id="9">
+		<plan>
+			<act type="home" link="1" end_time="06:00:40" />
+			<leg mode="car"></leg>
+			<act type="work" link="7" dur="02:00:00" end_time="09:00:00" />
+			<leg mode="car"></leg>
+			<act type="home" link="1" />
+		</plan>
+	</person>
+	<person id="10">
+		<plan>
+			<act type="home" link="1" end_time="06:00:45" />
+			<leg mode="car"></leg>
+			<act type="work" link="7" dur="02:00:00" end_time="09:00:00" />
+			<leg mode="car"></leg>
 			<act type="home" link="1" />
 		</plan>
 	</person>
