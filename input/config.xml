@@ -48,9 +48,10 @@
 		<!--param name="constantCar" value="-0.562" /-->
 		<!--param name="constantCar" value="-0.529" /-->
 <!-- 		<param name="constantCar" value="-0.372" /> -->
-		<param name="constantCar" value="-0.372" />
+<!-- 		<param name="constantCar" value="-0.372" /> -->
+		<param name="constantCar" value="-3.0" />
 		
-<!-- 		<param name="constantMytaxi" value="-0.372" /> -->
+<!--  		<param name="constantMytaxi" value="-0.372" />  -->
 
 		<!-- [utils] alternative-specific constant for walk.  no guarantee that this is used anywhere. default=0 to be backwards compatible for the time being -->
 		<param name="constantWalk" value="0.0" />
@@ -91,7 +92,7 @@
 		<!--param name="travelingWalk" value="-1.62"/-->
 		<param name="travelingWalk" value="-1.401"/>
 		
-<!-- 		<param name="travelingMytaxi" value="-0.52"/> -->
+<!-- 		<param name="travelingMytaxi" value="-0.12"/>  -->
 
 		<!-- [utils] utility of switching a line (= transfer penalty).  Normally negative -->
 		<param name="utilityOfLineSwitch" value="-0.095"/>
@@ -132,8 +133,8 @@
 		<param name="Module_2" value="ReRoute" />
 		<param name="ModuleDisableAfterIteration_2" value="20" />
 		
-<!-- 		<param name="ModuleProbability_3" value="0.5" /> -->
-<!-- 		<param name="Module_3" value="ChangeLegMode" /> -->
-<!-- 		<param name="ModuleDisableAfterIteration_3" value="20" /> -->
+		<param name="ModuleProbability_3" value="0.5" />
+		<param name="Module_3" value="ChangeLegMode" />
+		<param name="ModuleDisableAfterIteration_3" value="20" />
 	</module>
 </config>
