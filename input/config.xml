@@ -132,8 +132,8 @@
 		<param name="Module_2" value="ReRoute" />
 		<param name="ModuleDisableAfterIteration_2" value="20" />
 		
-		<param name="ModuleProbability_3" value="0.5" />
-		<param name="Module_3" value="ChangeLegMode" />
-		<param name="ModuleDisableAfterIteration_3" value="20" />
+<!-- 		<param name="ModuleProbability_3" value="0.5" /> -->
+<!-- 		<param name="Module_3" value="ChangeLegMode" /> -->
+<!-- 		<param name="ModuleDisableAfterIteration_3" value="20" /> -->
 	</module>
 </config>
