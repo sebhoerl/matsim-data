@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v1.dtd">
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
 <config>
 
 	<module name="global">
@@ -41,21 +41,34 @@
 	<module name="planCalcScore">
 		<param name="BrainExpBeta" value="1.0" />
 
-		<!-- [utils] alternative-specific constant for pt.  no guarantee that this is used anywhere. default=0 to be backwards compatible for the time being -->
-		<param name="constantPt" value="-0.124" />
-		
-		<!-- [utils] alternative-specific constant for car.  no guarantee that this is used anywhere. default=0 to be backwards compatible for the time being -->
-		<!--param name="constantCar" value="-0.562" /-->
-		<!--param name="constantCar" value="-0.529" /-->
-<!-- 		<param name="constantCar" value="-0.372" /> -->
-<!-- 		<param name="constantCar" value="-0.372" /> -->
-		<param name="constantCar" value="-3.0" />
-		
-<!--  		<param name="constantMytaxi" value="-0.372" />  -->
+		<parameterset type="modeParams" >
+			<!-- [utils] alternative-specific constant.  no guarantee that this is used anywhere. default=0 to be backwards compatible for the time being -->
+			<param name="constant" value="0.0" />
 
-		<!-- [utils] alternative-specific constant for walk.  no guarantee that this is used anywhere. default=0 to be backwards compatible for the time being -->
-		<param name="constantWalk" value="0.0" />
+			<!-- [utils/m] utility of walking per m, normally negative.  this is on top of the time (dis)utility. -->
+			<param name="marginalUtilityOfDistance_util_m" value="0.0" />
+
+			<!-- [utils/hr] additional marginal utility of traveling.  normally negative.  this comes on top of the opportunity cost of time -->
+			<param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+
+			<param name="mode" value="mytaxi" />
+			<param name="monetaryDistanceRate" value="0.0" />
+		</parameterset>
 		
+		<parameterset type="modeParams" >
+			<!-- [utils] alternative-specific constant.  no guarantee that this is used anywhere. default=0 to be backwards compatible for the time being -->
+			<param name="constant" value="0.0" />
+
+			<!-- [utils/m] utility of walking per m, normally negative.  this is on top of the time (dis)utility. -->
+			<param name="marginalUtilityOfDistance_util_m" value="0.0" />
+
+			<!-- [utils/hr] additional marginal utility of traveling.  normally negative.  this comes on top of the opportunity cost of time -->
+			<param name="marginalUtilityOfTraveling_util_hr" value="-20.0" />
+
+			<param name="mode" value="car" />
+			<param name="monetaryDistanceRate" value="0.0" />
+		</parameterset>
+
 		<!-- [utils/hr] utility for departing early (i.e. before the earliest end time).  Probably implemented correctly, but not tested. -->
 		<param name="earlyDeparture" value="-1.872" />
 
@@ -71,9 +84,6 @@
 		<!-- DISCOURAGED! [utils/m] utility of walking per m, normally negative.  this is on top of the time (dis)utility.  It is discouraged to use this but in some cases it may make sense. -->
 		<param name="marginalUtlOfDistanceWalk" value="0.0" />
 
-		<!-- [unit_of_money/m] conversion of car distance into money -->
-		<param name="monetaryDistanceRateCar" value="-0.0002" />
-		
 <!-- 		<param name="monetaryDistanceRateMytaxi" value="-0.0008" /> -->
 
 		<!-- [unit_of_money/m] conversion of pt distance into money -->
@@ -82,27 +92,11 @@
 		<!-- [utils/hr] marginal utility of doing an activity.  normally positive.  also the opportunity cost of time if agent is doing nothing. -->
 		<param name="performing" value="0.48" />
 
-		<!-- [utils/hr] additional marginal utility of traveling by car.  normally negative.  this comes on top of the opportunity cost of time -->
-		<param name="traveling" value="-0.48" />
-
-		<!-- [utils/hr] additional marginal utility offset of traveling by pt.  normally negative.  this comes on top of the opportunity cost of time -->
-		<param name="travelingPt" value="-0.66" />
-
-		<!-- [utils/hr] additional marginal utility offset of traveling by foot.  normally negative.  this comes on top of the opportunity cost of time.  also see marginalUtlOfDistanceWalk -->
-		<!--param name="travelingWalk" value="-1.62"/-->
-		<param name="travelingWalk" value="-1.401"/>
-		
-<!-- 		<param name="travelingMytaxi" value="-0.12"/>  -->
-
 		<!-- [utils] utility of switching a line (= transfer penalty).  Normally negative -->
 		<param name="utilityOfLineSwitch" value="-0.095"/>
 
 		<!-- [utils/hr] additional marginal utility for waiting. normally negative. this comes on top of the opportunity cost of time.  Probably implemented correctly, but not tested. -->
 		<param name="waiting" value="-0.0" />
-
-		<!-- [utils/hr] utility offset for waiting.  this comes on top of the opportunity cost of time.  Probably implemented correctly, but not tested. -->
-		<!-- param name="waitingPt" value="-1.62" / -->
-		<param name="waitingPt" value="-1.458" />
 		
 		<param name="activityType_0"            value="home" /> <!-- home - morning -->
 		<param name="activityPriority_0"        value="1" />
