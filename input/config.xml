@@ -52,7 +52,7 @@
 			<param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
 
 			<param name="mode" value="mytaxi" />
-			<param name="monetaryDistanceRate" value="0.0" />
+			<param name="monetaryDistanceRate" value="1.0" />
 		</parameterset>
 		
 		<parameterset type="modeParams" >
@@ -63,10 +63,10 @@
 			<param name="marginalUtilityOfDistance_util_m" value="0.0" />
 
 			<!-- [utils/hr] additional marginal utility of traveling.  normally negative.  this comes on top of the opportunity cost of time -->
-			<param name="marginalUtilityOfTraveling_util_hr" value="-20.0" />
+			<param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
 
 			<param name="mode" value="car" />
-			<param name="monetaryDistanceRate" value="0.0" />
+			<param name="monetaryDistanceRate" value="200.0" />
 		</parameterset>
 
 		<!-- [utils/hr] utility for departing early (i.e. before the earliest end time).  Probably implemented correctly, but not tested. -->
@@ -79,7 +79,7 @@
 		<param name="learningRate" value="1.0" />
 
 		<!-- [utils/unit_of_money] conversion of money (e.g. toll, distance cost) into utils -->
-		<param name="marginalUtilityOfMoney" value="0.062" />
+		<param name="marginalUtilityOfMoney" value="-0.062" />
 
 		<!-- DISCOURAGED! [utils/m] utility of walking per m, normally negative.  this is on top of the time (dis)utility.  It is discouraged to use this but in some cases it may make sense. -->
 		<param name="marginalUtlOfDistanceWalk" value="0.0" />
