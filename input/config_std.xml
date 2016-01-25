@@ -8,11 +8,11 @@
 	</module>
 
 	<module name="network">
-		<param name="inputNetworkFile" value="data/input/network.xml" />
+		<param name="inputNetworkFile" value="avdata/input/network.xml" />
 	</module>
 
 	<module name="plans">
-		<param name="inputPlansFile" value="data/input/population.xml" />
+		<param name="inputPlansFile" value="avdata/input/population.xml" />
 	</module>
 	
 	<module name="planscalcroute">
@@ -20,7 +20,7 @@
 	</module>
 
 	<module name="controler">
-		<param name="outputDirectory" value="data/output" />
+		<param name="outputDirectory" value="avdata/output" />
 		<param name="firstIteration" value="0" />
 		<param name="lastIteration" value="30" />
 		<param name="mobsim" value="qsim" />
