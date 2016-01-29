@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE network SYSTEM "http://www.matsim.org/files/dtd/network_v1.dtd">
+
+<network name="test network">
+   <nodes>
+      <node id="1" x="0" y="0" />
+      <node id="2" x="2500" y="0" />
+      <node id="3" x="5000" y="0" />
+      <node id="4" x="5000" y="2500" />
+      <node id="5" x="5000" y="5000" />
+      <node id="6" x="2500" y="5000" />
+      <node id="7" x="0" y="5000" />
+      <node id="8" x="0" y="2500" />
+   </nodes>
+   <links capperiod="01:00:00">
+      <link id="1" from="1" to="2" length="2500" capacity="2400" freespeed="13.9" permlanes="1" oneway="1" modes="car,av" />
+      <link id="2" from="2" to="3" length="2500" capacity="2400" freespeed="13.9" permlanes="1" oneway="1" modes="car,av"  />
+      <link id="3" from="3" to="4" length="2500" capacity="2400" freespeed="13.9" permlanes="1" oneway="1" modes="car,av"  />
+      <link id="4" from="4" to="5" length="2500" capacity="2400" freespeed="13.9" permlanes="1" oneway="1" modes="car,av"  />
+      <link id="5" from="5" to="6" length="2500" capacity="2400" freespeed="13.9" permlanes="1" oneway="1" modes="car,av" />
+      <link id="6" from="6" to="7" length="2500" capacity="2400" freespeed="13.9" permlanes="1" oneway="1" modes="car,av"  />
+      <link id="7" from="7" to="8" length="2500" capacity="2400" freespeed="13.9" permlanes="1" oneway="1" modes="car,av"  />
+      <link id="8" from="8" to="1" length="2500" capacity="2400" freespeed="13.9" permlanes="1" oneway="1" modes="car,av"  />
+      <link id="9" from="3" to="6" length="6000" capacity="20" freespeed="13.9" permlanes="1" oneway="1" modes="car,av" />
+   </links>
+</network>

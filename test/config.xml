@@ -1,6 +1,9 @@
 <?xml version="1.0" ?>
 <!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
 <config>
+	<module name="av">
+		<param name="numberOfTaxis" value="10" />
+	</module>
 
 	<module name="global">
 		<param name="randomSeed" value="4711" />
@@ -8,20 +11,19 @@
 	</module>
 
 	<module name="network">
-		<param name="inputNetworkFile" value="avdata/input/network.xml" />
+		<param name="inputNetworkFile" value="config/test/network.xml" />
 	</module>
 
 	<module name="plans">
-		<param name="inputPlansFile" value="avdata/input/population.xml" />
+		<param name="inputPlansFile" value="config/test/population.xml" />
 	</module>
 	
 	<module name="planscalcroute">
-<!-- 		<param name="networkModes" value="car,mytaxi" /> -->
-		<param name="networkModes" value="car,mytaxi" />
+		<param name="networkModes" value="car,av" />
 	</module>
 
 	<module name="controler">
-		<param name="outputDirectory" value="avdata/output" />
+		<param name="outputDirectory" value="data/output/test" />
 		<param name="firstIteration" value="0" />
 		<param name="lastIteration" value="30" />
 		<param name="mobsim" value="qsim" />
@@ -51,8 +53,8 @@
 			<!-- [utils/hr] additional marginal utility of traveling.  normally negative.  this comes on top of the opportunity cost of time -->
 			<param name="marginalUtilityOfTraveling_util_hr" value="-1.0" />
 
-			<param name="mode" value="mytaxi" />
-			<param name="monetaryDistanceRate" value="200.0" />
+			<param name="mode" value="av" />
+			<param name="monetaryDistanceRate" value="1.0" />
 		</parameterset>
 		
 		<parameterset type="modeParams" >
@@ -66,7 +68,7 @@
 			<param name="marginalUtilityOfTraveling_util_hr" value="-1.0" />
 
 			<param name="mode" value="car" />
-			<param name="monetaryDistanceRate" value="1.0" />
+			<param name="monetaryDistanceRate" value="1.75625" />
 		</parameterset>
 
 		<!-- [utils/hr] utility for departing early (i.e. before the earliest end time).  Probably implemented correctly, but not tested. -->
@@ -83,8 +85,6 @@
 
 		<!-- DISCOURAGED! [utils/m] utility of walking per m, normally negative.  this is on top of the time (dis)utility.  It is discouraged to use this but in some cases it may make sense. -->
 		<param name="marginalUtlOfDistanceWalk" value="0.0" />
-
-<!-- 		<param name="monetaryDistanceRateMytaxi" value="-0.0008" /> -->
 
 		<!-- [unit_of_money/m] conversion of pt distance into money -->
 		<param name="monetaryDistanceRatePt" value="0.0" />
@@ -114,7 +114,7 @@
 	</module>
 	
 	<module name="changeLegMode">
-		<param name="modes" value="car,mytaxi" />
+		<param name="modes" value="car,av" />
 	</module>
 	
 	<module name="strategy">

@@ -1,48 +1,50 @@
-<?xml version="1.0" ?>
-<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v1.dtd">
-<config>
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE config SYSTEM "./dtd/config_v1.dtd">
 
-	<module name="global">
-		<param name="randomSeed" value="4711" />
-		<param name="coordinateSystem" value="Atlantis" />
+<config>
+	<module name="av">
+		<param name="numberOfTaxis" value="500" />
 	</module>
 
 	<module name="network">
-		<param name="inputNetworkFile" value="avdata/input/network.xml" />
+		<param name="inputNetworkFile" value="data/corridor/network.xml" />
 	</module>
 
 	<module name="plans">
-		<param name="inputPlansFile" value="avdata/input/population.xml" />
-	</module>
-	
-	<module name="planscalcroute">
-		<param name="networkModes" value="car" />
+		<param name="inputPlansFile" value="data/corridor/population.xml" />
+		<param name="inputPersonAttributesFile" value="data/corridor/personAttributes.xml" />
 	</module>
 
 	<module name="controler">
-		<param name="outputDirectory" value="avdata/output" />
+		<param name="writeEventsInterval" value="100" />
+		<param name="eventsFileFormat" value="xml" />
+		<param name="outputDirectory" value="data/output/corridor" />
 		<param name="firstIteration" value="0" />
-		<param name="lastIteration" value="30" />
+		<param name="lastIteration" value="100" />
 		<param name="mobsim" value="qsim" />
-		<param name="snapshotFormat" value="" />
 	</module>
-
-	<module name="qsim">
-		<!-- "start/endTime" of MobSim (00:00:00 == take earliest activity time/ run as long as active vehicles exist) -->
-<!-- 		<param name="startTime" value="06:00:00" /> -->
-<!-- 		<param name="endTime" value="14:00:00" /> -->
-
+ 	
+	<module name="qsim" >
 		<param name="startTime" value="00:00:00" />
-		<param name="endTime" value="00:00:00" />
-
+		<param name="endTime" value="30:00:00" />
 		<param name="flowCapacityFactor" value="1.00" />
 		<param name="storageCapacityFactor" value="1.00" />
-		
-		<param name = "snapshotperiod"	value = "00:01:00"/> <!-- 00:00:00 means NO snapshot writing -->
-		<param name="mainMode" value="car" />
+		<param name="numberOfThreads" value="4" />
+		<param name = "snapshotperiod"	value = "00:00:10"/>
+
+		<!-- Boolean. `true': stuck vehicles are removed, aborting the plan; `false': stuck vehicles are forced into the next link. `false' is probably the better choice. -->
+		<param name="removeStuckVehicles" value="false" />
+
+		<!-- time in seconds.  Time after which the frontmost vehicle on a link is called `stuck' if it does not move. -->
+		<param name="stuckTime" value="600.0" />
+		<param name="timeStepSize" value="00:00:01" />
+
+		<!-- `queue' for the standard queue model, `withHolesExperimental' (experimental!!) for the queue model with holes -->
+		<param name="trafficDynamics" value="queue" />
 	</module>
 
 	<module name="planCalcScore">
+
 		<param name="BrainExpBeta" value="1.0" />
 
 		<!-- [utils] alternative-specific constant for pt.  no guarantee that this is used anywhere. default=0 to be backwards compatible for the time being -->
@@ -52,8 +54,6 @@
 		<!--param name="constantCar" value="-0.562" /-->
 		<!--param name="constantCar" value="-0.529" /-->
 		<param name="constantCar" value="-0.372" />
-		
-<!-- 		<param name="constantMytaxi" value="-0.372" /> -->
 
 		<!-- [utils] alternative-specific constant for walk.  no guarantee that this is used anywhere. default=0 to be backwards compatible for the time being -->
 		<param name="constantWalk" value="0.0" />
@@ -75,8 +75,6 @@
 
 		<!-- [unit_of_money/m] conversion of car distance into money -->
 		<param name="monetaryDistanceRateCar" value="-0.0002" />
-		
-<!-- 		<param name="monetaryDistanceRateMytaxi" value="-0.0008" /> -->
 
 		<!-- [unit_of_money/m] conversion of pt distance into money -->
 		<param name="monetaryDistanceRatePt" value="0.0" />
@@ -93,14 +91,12 @@
 		<!-- [utils/hr] additional marginal utility offset of traveling by foot.  normally negative.  this comes on top of the opportunity cost of time.  also see marginalUtlOfDistanceWalk -->
 		<!--param name="travelingWalk" value="-1.62"/-->
 		<param name="travelingWalk" value="-1.401"/>
-		
-<!-- 		<param name="travelingMytaxi" value="-0.52"/> -->
 
 		<!-- [utils] utility of switching a line (= transfer penalty).  Normally negative -->
 		<param name="utilityOfLineSwitch" value="-0.095"/>
 
 		<!-- [utils/hr] additional marginal utility for waiting. normally negative. this comes on top of the opportunity cost of time.  Probably implemented correctly, but not tested. -->
-		<param name="waiting" value="-0.4" />
+		<param name="waiting" value="-0.0" />
 
 		<!-- [utils/hr] utility offset for waiting.  this comes on top of the opportunity cost of time.  Probably implemented correctly, but not tested. -->
 		<!-- param name="waitingPt" value="-1.62" / -->
@@ -119,16 +115,97 @@
 		<param name="activityEarliestEndTime_1" value="18:00:00" />
 		<param name="activityLatestStartTime_1" value="09:00:00" />
 		<param name="activityClosingTime_1" value="19:00:00" />
+		
+		<param name="activityType_2"            value="pt interaction" />
+		
 	</module>
+	
+    <module name="heterogeneity">
+        <param name="incomeFile" value="incomes.xml" />
+        <param name="incomeOnTravelCostLambda" value="-0.1697" />
+        <param name="incomeOnTravelCostType" value="hetero"/>
+        <param name="distanceOnTravelTimeLambda" value="1.0" />
+    </module>
+    
+    <module name="roadpricing">
+        <param name="tollLinksFile" value="avdata/corridorScenario/roadpricing.xml" />
+    </module>
 	
 	<module name="strategy">
 		<param name="maxAgentPlanMemorySize" value="5" /> <!-- 0 means unlimited -->
-
+		
 		<param name="ModuleProbability_1" value="0.6" />
 		<param name="Module_1" value="SelectExpBeta" />
+		
+		<param name="ModuleProbability_2" value="0.2" />
+		<param name="Module_2" value="SubtourModeChoice" />
+		<param name="ModuleDisableAfterIteration_2" value="80" />
 
-		<param name="ModuleProbability_2" value="0.4" />
-		<param name="Module_2" value="ReRoute" />
-		<param name="ModuleDisableAfterIteration_2" value="20" />
+		<param name="ModuleProbability_3" value="0.2" />
+		<param name="Module_3" value="TimeAllocationMutator" />
+		<param name="ModuleDisableAfterIteration_3" value="80" />
 	</module>
+	
+	<module name="SimpleAnnealer">
+		<param name="annealType" value="linear" /> 
+		<param name="startProportion" value="0.4" />
+		<param name="endProportion" value="0.0" />
+	</module>
+	
+<!-- ====================================================================== -->
+
+	<module name="TimeAllocationMutator" >
+		<param name="mutationAffectsDuration" value="false" />
+		<param name="mutationRange" value="3600.00" />
+	</module>
+
+<!-- ====================================================================== -->
+	
+
+	<module name="transitRouter" >
+
+		<!-- additional time the router allocates when a line switch happens. Can be interpreted as a 'safety' time that agents need to safely transfer from one line to another -->
+		<param name="additionalTransferTime" value="0.0" />
+
+		<!-- step size to increase searchRadius if no stops are found -->
+		<param name="extensionRadius" value="500.0" />
+
+		<!-- maximum beeline distance between stops that agents could transfer to by walking -->
+		<param name="maxBeelineWalkConnectionDistance" value="300.0" />
+
+		<!-- the radius in which stop locations are searched, given a start or target coordinate -->
+		<param name="searchRadius" value="1500.0" />
+	</module>
+
+
+	<module name="subtourModeChoice" >
+		<param name="chainBasedModes" value="car" />
+		<param name="modes" value="car, pt, walk, av" />
+	</module>
+   
+  	<module name="transit">
+		<param name="useTransit" value="true" />
+  		<param name="transitScheduleFile" value="data/corridor/transitSchedule_10min.xml" />
+ 		<param name="vehiclesFile" value="data/corridor/vehicles_10min.xml" />
+  	 	<param name="transitModes" value="pt,bus" />
+  	</module>
+
+	<module name="travelTimeCalculator" >
+
+		<!-- Transport modes that will be respected by the travel time collector. 'car' is default, which includes also bussed from the pt simulation module. Use this parameter in combination with 'filterModes' = true! -->
+		<param name="analyzedModes" value="car" />
+
+		<param name="calculateLinkToLinkTravelTimes" value="false" />
+		<param name="calculateLinkTravelTimes" value="true" />
+
+		<!-- The size of the time bin (in sec) into which the link travel times are aggregated for the router -->
+		<param name="travelTimeBinSize" value="300" />
+
+	</module>
+    
+    <module name="vspExperimental" >
+        <param name="isGeneratingBoardingDeniedEvent" value="true" />
+    </module>
+	
+	
 </config>
